@@ -20,8 +20,7 @@
 
 @implementation PersistentStack
 
-- (id)initWithStoreURL:(NSURL*)storeURL modelURL:(NSURL*)modelURL
-{
+- (id)initWithStoreURL:(NSURL*)storeURL modelURL:(NSURL*)modelURL {
 	self = [super init];
 	if (self) {
 		self.storeURL = storeURL;

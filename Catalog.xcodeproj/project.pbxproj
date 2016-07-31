@@ -14,6 +14,8 @@
 		4F2D8C371D4D6FF200DBD897 /* Article.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F2D8C361D4D6FF200DBD897 /* Article.m */; };
 		4F2D8C3B1D4D705E00DBD897 /* ModelObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F2D8C3A1D4D705E00DBD897 /* ModelObject.m */; };
 		4F2D8C3E1D4D772A00DBD897 /* PersistentStack.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F2D8C3D1D4D772A00DBD897 /* PersistentStack.m */; };
+		4F2D8C471D4E6C9500DBD897 /* FetchedResultsTableDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F2D8C461D4E6C9500DBD897 /* FetchedResultsTableDataSource.m */; };
+		4F2D8C4A1D4E759F00DBD897 /* FetchedResultsCollectionDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F2D8C491D4E759F00DBD897 /* FetchedResultsCollectionDataSource.m */; };
 		4FAF1E871D4BB1750038F618 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FAF1E861D4BB1750038F618 /* main.m */; };
 		4FAF1E8A1D4BB1750038F618 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FAF1E891D4BB1750038F618 /* AppDelegate.m */; };
 		4FAF1E931D4BB1750038F618 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4FAF1E911D4BB1750038F618 /* Main.storyboard */; };
@@ -63,6 +65,11 @@
 		4F2D8C3A1D4D705E00DBD897 /* ModelObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModelObject.m; sourceTree = "<group>"; };
 		4F2D8C3C1D4D772A00DBD897 /* PersistentStack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersistentStack.h; sourceTree = "<group>"; };
 		4F2D8C3D1D4D772A00DBD897 /* PersistentStack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersistentStack.m; sourceTree = "<group>"; };
+		4F2D8C451D4E6C9500DBD897 /* FetchedResultsTableDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FetchedResultsTableDataSource.h; sourceTree = "<group>"; };
+		4F2D8C461D4E6C9500DBD897 /* FetchedResultsTableDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FetchedResultsTableDataSource.m; sourceTree = "<group>"; };
+		4F2D8C481D4E759F00DBD897 /* FetchedResultsCollectionDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FetchedResultsCollectionDataSource.h; sourceTree = "<group>"; };
+		4F2D8C491D4E759F00DBD897 /* FetchedResultsCollectionDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FetchedResultsCollectionDataSource.m; sourceTree = "<group>"; };
+		4F2D8C4B1D4E7F3700DBD897 /* FetchedResultsControllerDataSourceDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FetchedResultsControllerDataSourceDelegate.h; sourceTree = "<group>"; };
 		4FAF1E821D4BB1750038F618 /* Catalog.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Catalog.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4FAF1E861D4BB1750038F618 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		4FAF1E881D4BB1750038F618 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -159,15 +166,80 @@
 			name = Importer;
 			sourceTree = "<group>";
 		};
-		4F2D8C381D4D6FFA00DBD897 /* Model */ = {
+		4F2D8C381D4D6FFA00DBD897 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				4F2D8C511D4E818C00DBD897 /* DataSources */,
+				4F2D8C4E1D4E806000DBD897 /* PersistentStack */,
+				4F2D8C4D1D4E801900DBD897 /* Article */,
+				4F2D8C051D4CFBAB00DBD897 /* Importer */,
+				4F2D8C041D4CF6BA00DBD897 /* ArticlesService */,
+				4F2D8C4B1D4E7F3700DBD897 /* FetchedResultsControllerDataSourceDelegate.h */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		4F2D8C4D1D4E801900DBD897 /* Article */ = {
+			isa = PBXGroup;
+			children = (
+				4F2D8C531D4E822700DBD897 /* Article */,
+				4F2D8C521D4E821C00DBD897 /* ModelObject */,
+			);
+			name = Article;
+			sourceTree = "<group>";
+		};
+		4F2D8C4E1D4E806000DBD897 /* PersistentStack */ = {
+			isa = PBXGroup;
+			children = (
+				4F2D8C3C1D4D772A00DBD897 /* PersistentStack.h */,
+				4F2D8C3D1D4D772A00DBD897 /* PersistentStack.m */,
+			);
+			name = PersistentStack;
+			sourceTree = "<group>";
+		};
+		4F2D8C4F1D4E80B400DBD897 /* FetchedCollectionDataSource */ = {
+			isa = PBXGroup;
+			children = (
+				4F2D8C481D4E759F00DBD897 /* FetchedResultsCollectionDataSource.h */,
+				4F2D8C491D4E759F00DBD897 /* FetchedResultsCollectionDataSource.m */,
+			);
+			name = FetchedCollectionDataSource;
+			sourceTree = "<group>";
+		};
+		4F2D8C501D4E80E300DBD897 /* FetchedTableDataSource */ = {
+			isa = PBXGroup;
+			children = (
+				4F2D8C451D4E6C9500DBD897 /* FetchedResultsTableDataSource.h */,
+				4F2D8C461D4E6C9500DBD897 /* FetchedResultsTableDataSource.m */,
+			);
+			name = FetchedTableDataSource;
+			sourceTree = "<group>";
+		};
+		4F2D8C511D4E818C00DBD897 /* DataSources */ = {
+			isa = PBXGroup;
+			children = (
+				4F2D8C4F1D4E80B400DBD897 /* FetchedCollectionDataSource */,
+				4F2D8C501D4E80E300DBD897 /* FetchedTableDataSource */,
+			);
+			name = DataSources;
+			sourceTree = "<group>";
+		};
+		4F2D8C521D4E821C00DBD897 /* ModelObject */ = {
+			isa = PBXGroup;
+			children = (
+				4F2D8C391D4D705E00DBD897 /* ModelObject.h */,
+				4F2D8C3A1D4D705E00DBD897 /* ModelObject.m */,
+			);
+			name = ModelObject;
+			sourceTree = "<group>";
+		};
+		4F2D8C531D4E822700DBD897 /* Article */ = {
 			isa = PBXGroup;
 			children = (
 				4F2D8C351D4D6FF200DBD897 /* Article.h */,
 				4F2D8C361D4D6FF200DBD897 /* Article.m */,
-				4F2D8C391D4D705E00DBD897 /* ModelObject.h */,
-				4F2D8C3A1D4D705E00DBD897 /* ModelObject.m */,
 			);
-			name = Model;
+			name = Article;
 			sourceTree = "<group>";
 		};
 		4FAF1E791D4BB1750038F618 = {
@@ -197,11 +269,7 @@
 			children = (
 				4FAF1E881D4BB1750038F618 /* AppDelegate.h */,
 				4FAF1E891D4BB1750038F618 /* AppDelegate.m */,
-				4F2D8C3C1D4D772A00DBD897 /* PersistentStack.h */,
-				4F2D8C3D1D4D772A00DBD897 /* PersistentStack.m */,
-				4F2D8C381D4D6FFA00DBD897 /* Model */,
-				4F2D8C051D4CFBAB00DBD897 /* Importer */,
-				4F2D8C041D4CF6BA00DBD897 /* ArticlesService */,
+				4F2D8C381D4D6FFA00DBD897 /* Models */,
 				4FAF1EC21D4BBA900038F618 /* Views */,
 				4FAF1EC11D4BBA760038F618 /* Controllers */,
 				4FAF1E911D4BB1750038F618 /* Main.storyboard */,
@@ -587,6 +655,7 @@
 				4F2D8C3B1D4D705E00DBD897 /* ModelObject.m in Sources */,
 				4FAF1EE01D4BD26C0038F618 /* ContentView.m in Sources */,
 				4F2D8C371D4D6FF200DBD897 /* Article.m in Sources */,
+				4F2D8C471D4E6C9500DBD897 /* FetchedResultsTableDataSource.m in Sources */,
 				4F2D8C341D4D369E00DBD897 /* Catalog.xcdatamodeld in Sources */,
 				4F2D8C081D4CFBC300DBD897 /* Importer.m in Sources */,
 				4FAF1E8A1D4BB1750038F618 /* AppDelegate.m in Sources */,
@@ -594,6 +663,7 @@
 				4F2D8C3E1D4D772A00DBD897 /* PersistentStack.m in Sources */,
 				4FAF1ED61D4BBF5F0038F618 /* CatalogCollectionViewController.m in Sources */,
 				4FAF1ED11D4BBEB10038F618 /* CatalogTableViewCell.m in Sources */,
+				4F2D8C4A1D4E759F00DBD897 /* FetchedResultsCollectionDataSource.m in Sources */,
 				4F2D8C031D4CF6B300DBD897 /* ArticlesService.m in Sources */,
 				4FAF1EDA1D4BBFEB0038F618 /* CatalogCollectionViewCell.m in Sources */,
 				4FAF1EBD1D4BB9A70038F618 /* CatalogTableViewController.m in Sources */,

@@ -7,6 +7,7 @@ target 'Catalog' do
 
   # Pods for Catalog
 	pod 'AFNetworking', '~> 3.0'
+	pod 'UICollectionView+NSFetchedResultsController'
 
   target 'CatalogTests' do
     inherit! :search_paths

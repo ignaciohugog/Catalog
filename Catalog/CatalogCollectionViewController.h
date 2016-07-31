@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
+@class FetchedResultsTableDataSource;
+
 @interface CatalogCollectionViewController : UICollectionViewController
 
 @end

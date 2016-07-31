@@ -15,8 +15,7 @@
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
-
-@property (nonatomic, strong) PersistentStack *persistentStack;
+@property (readonly) NSManagedObjectContext *managedObjectContext;
 @property (nonatomic, strong) ArticlesService *webservice;
 
 @end

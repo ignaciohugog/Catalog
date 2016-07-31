@@ -8,8 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import <CoreData/CoreData.h>
-@class NSFetchedResultsController;
 
-@interface CatalogTableViewController : UITableViewController <NSFetchedResultsControllerDelegate>
+@class FetchedResultsTableDataSource;
+
+@interface CatalogTableViewController : UITableViewController
 
 @end

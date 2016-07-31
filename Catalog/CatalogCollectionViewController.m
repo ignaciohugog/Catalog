@@ -7,11 +7,20 @@
 //
 
 #import "CatalogCollectionViewController.h"
-#import "CatalogTableViewCell.h"
 #import "CatalogCollectionViewCell.h"
+#import "UICollectionView+NSFetchedResultsController.h"
 
-@interface CatalogCollectionViewController ()
+#import "FetchedResultsTableDataSource.h"
+#import "FetchedResultsCollectionDataSource.h"
 
+
+#import <CoreData/CoreData.h>
+#import "AppDelegate.h"
+#import "Article.h"
+
+
+@interface CatalogCollectionViewController () <FetchedResultsControllerDataSourceDelegate>
+@property (nonatomic, strong) FetchedResultsCollectionDataSource *dataSource;
 @end
 
 @implementation CatalogCollectionViewController
@@ -19,48 +28,41 @@
 static NSString * const reuseIdentifier = @"CatalogCollectionViewCell";
 
 - (void)viewDidLoad {
-    [super viewDidLoad];
-    
-    // Uncomment the following line to preserve selection between presentations
-    // self.clearsSelectionOnViewWillAppear = NO;
-    
-    // Register cell classes
+	[super viewDidLoad];
+	[self registerCell];
+	[self setupDataSource];
+}
 
-
+- (void)registerCell {
 	UINib *nib = [UINib nibWithNibName:reuseIdentifier bundle:nil];
-
 	[self.collectionView registerNib:nib forCellWithReuseIdentifier:reuseIdentifier];
-
-    // Do any additional setup after loading the view.
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (void)setupDataSource {
+	self.dataSource = [[FetchedResultsCollectionDataSource alloc] initWithTableView:self.collectionView];
+	self.dataSource.delegate = self;
+	self.dataSource.fetchedResultsController = [self createResultsController];
+	self.dataSource.reuseIdentifier = reuseIdentifier;
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
-
-#pragma mark <UICollectionViewDataSource>
-
-- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-	CatalogCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
-		// Configure the cell
-	cell.titleLabel.text = @"dasd";
-	return cell;
-
+- (NSFetchedResultsController *)createResultsController {
+	NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Article"];
+	request.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"identifier" ascending:YES]];
+	AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
+	return [[NSFetchedResultsController alloc] initWithFetchRequest:request
+																						 managedObjectContext:appDelegate.managedObjectContext
+																							 sectionNameKeyPath:nil
+																												cacheName:nil];
 }
 
-- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-	return 15;
+#pragma mark FetchedResultsControllerDataSourceDelegate
+
+- (void)configureCell:(CatalogCollectionViewCell *)cell withObject:(Article*)object {
+	cell.subtitle.text = object.author;
+	cell.nameLabel.text = object.title;
+}
+
+- (void)deleteObject:(id)object {
 
 }
 
@@ -91,8 +93,10 @@ static NSString * const reuseIdentifier = @"CatalogCollectionViewCell";
 }
 
 - (void)collectionView:(UICollectionView *)collectionView performAction:(SEL)action forItemAtIndexPath:(NSIndexPath *)indexPath withSender:(id)sender {
-	
+
 }
 */
+
+
 
 @end

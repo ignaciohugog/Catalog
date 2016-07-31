@@ -14,10 +14,10 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = '561CF4D985BA8DAD056E7E78BF89BF93'
-               BlueprintName = 'Pods-Catalog'
+               BlueprintIdentifier = 'ECA9B28CE8D04C2B54EF3F03D449F321'
+               BlueprintName = 'UICollectionView+NSFetchedResultsController'
                ReferencedContainer = 'container:Pods.xcodeproj'
-               BuildableName = 'libPods-Catalog.a'>
+               BuildableName = 'libUICollectionView+NSFetchedResultsController.a'>
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>

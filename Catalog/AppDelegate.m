@@ -13,6 +13,7 @@
 
 @interface AppDelegate ()
 @property (nonatomic, strong) Importer *importer;
+@property (nonatomic, strong) PersistentStack *persistentStack;
 @end
 
 @implementation AppDelegate
@@ -53,8 +54,7 @@
 
 #pragma mark - Core Data stack
 
-- (void)saveContext
-{
+- (void)saveContext {
 	NSError *error = nil;
 	[self.persistentStack.managedObjectContext save:&error];
 	if (error) {
@@ -73,6 +73,10 @@
 
 - (NSURL*)modelURL {
 	return [[NSBundle mainBundle] URLForResource:@"Catalog" withExtension:@"momd"];
+}
+
+- (NSManagedObjectContext *)managedObjectContext {
+	return self.persistentStack.managedObjectContext;
 }
 
 

@@ -1,5 +1,5 @@
 //
-//  FirstViewController.h
+//  ContentView.h
 //  Catalog
 //
 //  Created by Ignacio H. Gomez on 7/29/16.
@@ -8,8 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface FirstViewController : UIViewController
-
+@interface ContentView : UIView
 
 @end
-

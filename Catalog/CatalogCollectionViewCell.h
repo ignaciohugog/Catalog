@@ -1,5 +1,5 @@
 //
-//  SecondViewController.h
+//  CatalogCollectionViewCell.h
 //  Catalog
 //
 //  Created by Ignacio H. Gomez on 7/29/16.
@@ -8,8 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SecondViewController : UIViewController
-
+@interface CatalogCollectionViewCell : UICollectionViewCell
+@property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 
 @end
-

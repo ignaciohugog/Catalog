@@ -8,10 +8,15 @@
 
 #import <UIKit/UIKit.h>
 
+@class PersistentStack;
+@class ArticlesService;
+@class Importer;
+
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
 
+@property (nonatomic, strong) PersistentStack *persistentStack;
+@property (nonatomic, strong) ArticlesService *webservice;
 
 @end
-

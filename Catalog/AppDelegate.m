@@ -7,16 +7,25 @@
 //
 
 #import "AppDelegate.h"
+#import "PersistentStack.h"
+#import "ArticlesService.h"
+#import "Importer.h"
 
 @interface AppDelegate ()
-
+@property (nonatomic, strong) Importer *importer;
 @end
 
 @implementation AppDelegate
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-	// Override point for customization after application launch.
+	self.persistentStack = [[PersistentStack alloc] initWithStoreURL:self.storeURL modelURL:self.modelURL];
+	self.webservice = [[ArticlesService alloc] init];
+	self.importer = [[Importer alloc] initWithContext:self.persistentStack.backgroundManagedObjectContext webservice:self.webservice];
+	[self.importer import];
+
+		//	listViewController.managedObjectContext = self.persistentStack.managedObjectContext;
+
 	return YES;
 }
 
@@ -41,5 +50,30 @@
 - (void)applicationWillTerminate:(UIApplication *)application {
 	// Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
+
+#pragma mark - Core Data stack
+
+- (void)saveContext
+{
+	NSError *error = nil;
+	[self.persistentStack.managedObjectContext save:&error];
+	if (error) {
+		NSLog(@"error saving: %@", error.localizedDescription);
+	}
+}
+
+- (NSURL*)storeURL {
+	NSURL* documentsDirectory = [[NSFileManager defaultManager] URLForDirectory:NSDocumentDirectory
+																																		 inDomain:NSUserDomainMask
+																														appropriateForURL:nil
+																																			 create:YES
+																																				error:NULL];
+	return [documentsDirectory URLByAppendingPathComponent:@"db.sqlite"];
+}
+
+- (NSURL*)modelURL {
+	return [[NSBundle mainBundle] URLForResource:@"Catalog" withExtension:@"momd"];
+}
+
 
 @end

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="CatalogCollectionViewCell" id="gTV-IL-0wX" customClass="CatalogCollectionViewCell">
+            <rect key="frame" x="0.0" y="0.0" width="301" height="151"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="301" height="151"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="collectioooon" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j5g-3b-rPN">
+                        <rect key="frame" x="84" y="14" width="103" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            </view>
+            <color key="backgroundColor" red="0.45850974399122735" green="1" blue="0.35920750302613946" alpha="1" colorSpace="calibratedRGB"/>
+            <constraints>
+                <constraint firstItem="j5g-3b-rPN" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="2F1-8I-CB2"/>
+                <constraint firstItem="j5g-3b-rPN" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="H9E-P2-VhO"/>
+            </constraints>
+            <size key="customSize" width="301" height="151"/>
+            <connections>
+                <outlet property="titleLabel" destination="j5g-3b-rPN" id="bCU-Rv-Kja"/>
+            </connections>
+            <point key="canvasLocation" x="455.5" y="106.5"/>
+        </collectionViewCell>
+    </objects>
+</document>

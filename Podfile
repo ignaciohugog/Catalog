@@ -1,0 +1,21 @@
+# Uncomment this line to define a global platform for your project
+# platform :ios, '9.0'
+
+target 'Catalog' do
+  # Uncomment this line if you're using Swift or would like to use dynamic frameworks
+  # use_frameworks!
+
+  # Pods for Catalog
+	pod 'AFNetworking', '~> 3.0'
+
+  target 'CatalogTests' do
+    inherit! :search_paths
+    # Pods for testing
+  end
+
+  target 'CatalogUITests' do
+    inherit! :search_paths
+    # Pods for testing
+  end
+
+end

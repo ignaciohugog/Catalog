@@ -8,15 +8,12 @@
 
 #import "CatalogCollectionViewController.h"
 #import "CatalogCollectionViewCell.h"
-#import "UICollectionView+NSFetchedResultsController.h"
-
-#import "FetchedResultsTableDataSource.h"
+#import "FetchedResultsControllerDataSourceDelegate.h"
 #import "FetchedResultsCollectionDataSource.h"
-
-
-#import <CoreData/CoreData.h>
 #import "AppDelegate.h"
 #import "Article.h"
+#import "AFNetworking.h"
+#import "UIImageView+AFNetworking.h"
 
 
 @interface CatalogCollectionViewController () <FetchedResultsControllerDataSourceDelegate>
@@ -60,6 +57,14 @@ static NSString * const reuseIdentifier = @"CatalogCollectionViewCell";
 - (void)configureCell:(CatalogCollectionViewCell *)cell withObject:(Article*)object {
 	cell.subtitle.text = object.author;
 	cell.nameLabel.text = object.title;
+	
+	NSURLRequest *imageRequest = [NSURLRequest requestWithURL:[NSURL URLWithString:object.imageUrl]
+																								cachePolicy:NSURLRequestReturnCacheDataElseLoad
+																						timeoutInterval:60];
+	[cell.articleImageView setImageWithURLRequest:imageRequest
+															 placeholderImage:[UIImage imageNamed:@"placeholder"]
+																				success:nil
+																				failure:nil];
 }
 
 - (void)deleteObject:(id)object {

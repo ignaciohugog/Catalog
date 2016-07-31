@@ -7,7 +7,6 @@
 //
 
 #import "ArticlesService.h"
-#import "AFNetworking.h"
 
 @implementation ArticlesService
 

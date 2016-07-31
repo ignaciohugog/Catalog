@@ -15,15 +15,14 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="196"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yUp-kh-NqT">
-                        <rect key="frame" x="138" y="8" width="45" height="21"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yUp-kh-NqT">
+                        <rect key="frame" x="18" y="8" width="284" height="21"/>
+                        <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="17"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Sq-iu-iXU">
-                        <rect key="frame" x="131" y="37" width="59" height="21"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalCompressionResistancePriority="751" text="Subtitle" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Sq-iu-iXU">
+                        <rect key="frame" x="18" y="37" width="284" height="21"/>
+                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
                     </label>
@@ -33,17 +32,34 @@
                             <constraint firstAttribute="width" constant="240" id="5CL-cE-gg3"/>
                             <constraint firstAttribute="height" constant="128" id="iMB-Ch-Xyt"/>
                         </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                <integer key="value" value="10"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                        </userDefinedRuntimeAttributes>
                     </imageView>
                 </subviews>
+                <color key="backgroundColor" red="0.8847753566937987" green="0.8518178621442567" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                 <constraints>
                     <constraint firstItem="0Sq-iu-iXU" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="2l5-VW-rpK"/>
                     <constraint firstItem="nie-9a-jwt" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="3F7-Sn-vDS"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="0Sq-iu-iXU" secondAttribute="trailing" constant="10" id="Jc2-nM-NoY"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="yUp-kh-NqT" secondAttribute="trailing" constant="10" id="Kkb-hK-p2Y"/>
                     <constraint firstAttribute="bottomMargin" secondItem="nie-9a-jwt" secondAttribute="bottom" id="LWh-Tb-icE"/>
+                    <constraint firstItem="yUp-kh-NqT" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="10" id="PdP-4w-gEg"/>
+                    <constraint firstItem="0Sq-iu-iXU" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="10" id="PuN-Yv-JBu"/>
                     <constraint firstItem="0Sq-iu-iXU" firstAttribute="top" secondItem="yUp-kh-NqT" secondAttribute="bottom" constant="8" id="Qam-GV-BcT"/>
                     <constraint firstItem="nie-9a-jwt" firstAttribute="top" secondItem="0Sq-iu-iXU" secondAttribute="bottom" constant="2" id="VIi-Yi-OnK"/>
                     <constraint firstItem="yUp-kh-NqT" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="Xtq-Fg-YzW"/>
                     <constraint firstAttribute="topMargin" secondItem="yUp-kh-NqT" secondAttribute="top" id="hmO-Tx-vaL"/>
                 </constraints>
+                <variation key="default">
+                    <mask key="constraints">
+                        <exclude reference="Xtq-Fg-YzW"/>
+                        <exclude reference="2l5-VW-rpK"/>
+                    </mask>
+                </variation>
             </tableViewCellContentView>
             <connections>
                 <outlet property="articleImageView" destination="nie-9a-jwt" id="9Jz-QA-FP2"/>

@@ -13,28 +13,39 @@
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                 <rect key="frame" x="0.0" y="0.0" width="301" height="223"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j5g-3b-rPN">
-                        <rect key="frame" x="128" y="17" width="45" height="21"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j5g-3b-rPN">
+                        <rect key="frame" x="10" y="17" width="281" height="21"/>
+                        <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="17"/>
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8ER-L2-Voy">
-                        <rect key="frame" x="121" y="51" width="59" height="21"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Subtitle" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8ER-L2-Voy">
+                        <rect key="frame" x="10" y="43" width="281" height="36"/>
+                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="Wvg-AH-ZyQ">
-                        <rect key="frame" x="30" y="78" width="240" height="128"/>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="Wvg-AH-ZyQ">
+                        <rect key="frame" x="5" y="85" width="291" height="128"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="128" id="awU-vq-5E0"/>
+                        </constraints>
                     </imageView>
                 </subviews>
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             </view>
-            <color key="backgroundColor" red="0.45850974399122735" green="1" blue="0.35920750302613946" alpha="1" colorSpace="calibratedRGB"/>
+            <color key="backgroundColor" red="0.88477535669999996" green="0.85181786209999999" blue="1" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
-                <constraint firstItem="j5g-3b-rPN" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="2F1-8I-CB2"/>
-                <constraint firstItem="j5g-3b-rPN" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="H9E-P2-VhO"/>
+                <constraint firstItem="8ER-L2-Voy" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="10" id="DtA-wB-NdO"/>
+                <constraint firstItem="j5g-3b-rPN" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="17" id="FZU-YS-Wgn"/>
+                <constraint firstItem="Wvg-AH-ZyQ" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="5" id="Ntb-Zv-IXA"/>
+                <constraint firstItem="j5g-3b-rPN" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="10" id="V8Z-ne-oc8"/>
+                <constraint firstAttribute="trailing" secondItem="Wvg-AH-ZyQ" secondAttribute="trailing" constant="5" id="VsH-jq-2Ov"/>
+                <constraint firstItem="8ER-L2-Voy" firstAttribute="top" secondItem="j5g-3b-rPN" secondAttribute="bottom" constant="5" id="WPf-DS-XyW"/>
+                <constraint firstAttribute="trailing" secondItem="8ER-L2-Voy" secondAttribute="trailing" constant="10" id="ZlM-EJ-N6z"/>
+                <constraint firstItem="Wvg-AH-ZyQ" firstAttribute="top" secondItem="8ER-L2-Voy" secondAttribute="bottom" constant="6" id="i81-3A-msC"/>
+                <constraint firstAttribute="bottom" secondItem="Wvg-AH-ZyQ" secondAttribute="bottom" constant="10" id="pDJ-Tc-vpW"/>
+                <constraint firstAttribute="trailing" secondItem="j5g-3b-rPN" secondAttribute="trailing" constant="10" id="s23-mB-ACp"/>
             </constraints>
             <size key="customSize" width="301" height="223"/>
             <connections>
@@ -42,7 +53,7 @@
                 <outlet property="nameLabel" destination="j5g-3b-rPN" id="OUj-9T-7a0"/>
                 <outlet property="subtitle" destination="8ER-L2-Voy" id="iaJ-7Q-MkP"/>
             </connections>
-            <point key="canvasLocation" x="457.5" y="160.5"/>
+            <point key="canvasLocation" x="247.5" y="50.5"/>
         </collectionViewCell>
     </objects>
     <resources>

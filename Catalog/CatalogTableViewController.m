@@ -11,6 +11,8 @@
 #import "CatalogTableViewCell.h"
 #import "AppDelegate.h"
 #import "Article.h"
+#import "AFNetworking.h"
+#import "UIImageView+AFNetworking.h"
 
 @interface CatalogTableViewController() <FetchedResultsControllerDataSourceDelegate>
 
@@ -39,7 +41,7 @@ static NSString * const reuseIdentifier = @"CatalogTableViewCell";
 }
 
 - (void)setupDataSource {
-	self.dataSource = [[FetchedResultsControllerDataSource alloc] initWithTableView:self.tableView];
+	self.dataSource = [[FetchedResultsTableDataSource alloc] initWithTableView:self.tableView];
 	self.dataSource.delegate = self;
 	self.dataSource.fetchedResultsController = [self createResultsController];
 	self.dataSource.reuseIdentifier = reuseIdentifier;
@@ -60,6 +62,14 @@ static NSString * const reuseIdentifier = @"CatalogTableViewCell";
 - (void)configureCell:(CatalogTableViewCell *)cell withObject:(Article*)object {
 	cell.subtitle.text = object.author;
 	cell.nameLabel.text = object.title;
+
+	NSURLRequest *imageRequest = [NSURLRequest requestWithURL:[NSURL URLWithString:object.imageUrl]
+																								cachePolicy:NSURLRequestReturnCacheDataElseLoad
+																						timeoutInterval:60];
+	[cell.articleImageView setImageWithURLRequest:imageRequest
+															 placeholderImage:[UIImage imageNamed:@"placeholder"]
+																				success:nil
+																				failure:nil];
 }
 
 - (void)deleteObject:(id)object {

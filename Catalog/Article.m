@@ -21,7 +21,7 @@
 
 - (void)loadFromDictionary:(NSDictionary *)dictionary {
 	self.identifier = dictionary[@"id"];
-	self.title = dictionary[@"title"];
+	self.title = dictionary[@"title"] ? dictionary[@"title"]:@"-";
 	self.category = dictionary[@"category"];
 	self.channel = dictionary[@"channel"];
 	self.author = dictionary[@"author"];

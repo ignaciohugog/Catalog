@@ -27,16 +27,6 @@
 	return self;
 }
 
-//- (void)loadFromDictionary:(NSDictionary *)dictionary {
-//	self.identifier = dictionary[@"id"];
-//	self.title = dictionary[@"title"];
-//	self.category = dictionary[@"category"];
-//	self.channel = dictionary[@"channel"];
-//	self.author = dictionary[@"author"];
-//	self.publishDate = dictionary[@"publishDate"];
-//	self.imageUrl = dictionary[@"imageUrl"];
-//}
-
 - (void)import {
 	self.batchCount = 0;
 	[self.webservice fetchAllArticles:^(NSArray *articles) {
@@ -44,16 +34,7 @@
 			for(NSDictionary *podSpec in articles) {
 				NSString *identifier = podSpec[@"id"];
 				Article *article = [Article findOrCreatePodWithIdentifier:identifier inContext:self.context];
-				article.identifier = podSpec[@"id"];
-				article.title = podSpec[@"title"];
-				article.category = podSpec[@"category"];
-				article.channel = podSpec[@"channel"];
-				article.author = podSpec[@"author"];
-					//article.publishDate = podSpec[@"publishDate"];
-				article.smallImageUrl = podSpec[@"imageUrl"];
-				article.smallImageUrl = podSpec[@"square3Url"];
-
-					//[article loadFromDictionary:podSpec];
+				[article loadFromDictionary:podSpec];
 			}
 				//self.batchCount++;
 				//if (self.batchCount % 10 == 0) {

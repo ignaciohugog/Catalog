@@ -10,7 +10,7 @@
 #import <CoreData/CoreData.h>
 #import "ModelObject.h"
 
-@interface Article : ModelObject
+@interface Article: ModelObject
 
 @property (nonatomic, retain) NSString * identifier;
 @property (nonatomic, retain) NSString * title;

@@ -29,7 +29,7 @@
 - (void)viewDidLoad {
 	[super viewDidLoad];
 	self.navigationItem.title = self.article.title;
-	self.publishDateLabel.text = @"TODO";
+	self.publishDateLabel.text = self.article.publishDate;
 	self.categoryLabel.text = self.article.category;
 	self.channelLabel.text = self.article.channel;
 	self.authorLabel.text = self.article.author;

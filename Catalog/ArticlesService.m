@@ -23,7 +23,7 @@
 	manager.requestSerializer = [AFJSONRequestSerializer serializer];
 	[manager.requestSerializer setValue:@"application/json" forHTTPHeaderField:@"Accept"];
 	[manager.requestSerializer setValue:@"DAOS4SYzZzmshCAAlhNN61AZzfGrp1jZ0j8jsn7h37w3ZyaXBq" forHTTPHeaderField:@"X-Mashape-Key"];
-	[manager POST:@"https://devru-instructables.p.mashape.com/list?limit=1000&offset=0&sort=recent&type=id" parameters:nil progress:nil success:^(NSURLSessionTask *task, id responseObject) {
+	[manager POST:@"https://devru-instructables.p.mashape.com/list?limit=10&offset=0&sort=recent&type=id" parameters:nil progress:nil success:^(NSURLSessionTask *task, id responseObject) {
 		callback(responseObject[@"items"]);
 		if (page + 1 < 10) {
 				//	[self fetchArticles:callback page:page + 1];

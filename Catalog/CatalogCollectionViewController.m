@@ -15,9 +15,9 @@
 #import "AFNetworking.h"
 #import "UIImageView+AFNetworking.h"
 #import "ArticleDetailViewController.h"
+#import "FilterDelegate.h"
 
-
-@interface CatalogCollectionViewController () <FetchedResultsControllerDataSourceDelegate>
+@interface CatalogCollectionViewController () <FetchedResultsControllerDataSourceDelegate, FilterDelegate>
 @property (nonatomic, strong) FetchedResultsCollectionDataSource *dataSource;
 @end
 
@@ -53,9 +53,6 @@ static NSString * const reuseIdentifier = @"CatalogCollectionViewCell";
 																												cacheName:nil];
 }
 
-- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-	[self performSegueWithIdentifier:@"detail" sender:nil];
-}
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
 	ArticleDetailViewController *detailViewController = segue.destinationViewController;
@@ -80,35 +77,18 @@ static NSString * const reuseIdentifier = @"CatalogCollectionViewCell";
 
 #pragma mark <UICollectionViewDelegate>
 
-/*
-// Uncomment this method to specify if the specified item should be highlighted during tracking
-- (BOOL)collectionView:(UICollectionView *)collectionView shouldHighlightItemAtIndexPath:(NSIndexPath *)indexPath {
-	return YES;
-}
-*/
-
-/*
-// Uncomment this method to specify if the specified item should be selected
-- (BOOL)collectionView:(UICollectionView *)collectionView shouldSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    return YES;
-}
-*/
-
-/*
-// Uncomment these methods to specify if an action menu should be displayed for the specified item, and react to actions performed on the item
-- (BOOL)collectionView:(UICollectionView *)collectionView shouldShowMenuForItemAtIndexPath:(NSIndexPath *)indexPath {
-	return NO;
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+	[self performSegueWithIdentifier:@"detail" sender:nil];
 }
 
-- (BOOL)collectionView:(UICollectionView *)collectionView canPerformAction:(SEL)action forItemAtIndexPath:(NSIndexPath *)indexPath withSender:(id)sender {
-	return NO;
+#pragma mark FilterDelegate
+
+- (void)reload {
+	[self.collectionView reloadData];
 }
 
-- (void)collectionView:(UICollectionView *)collectionView performAction:(SEL)action forItemAtIndexPath:(NSIndexPath *)indexPath withSender:(id)sender {
-
+- (NSFetchedResultsController *)fetchedResultsController {
+	return self.dataSource.fetchedResultsController;
 }
-*/
-
-
 
 @end

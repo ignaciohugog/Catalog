@@ -55,13 +55,13 @@
 
 					//[article loadFromDictionary:podSpec];
 			}
-			self.batchCount++;
-			if (self.batchCount % 10 == 0) {
+				//self.batchCount++;
+				//if (self.batchCount % 10 == 0) {
 				NSError *error = nil;
 				[self.context save:&error];
 				if (error) {
 					NSLog(@"Error: %@", error.localizedDescription);
-				}
+						//}
 			}
 		}];
 	}];

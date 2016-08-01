@@ -7,9 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <CoreData/CoreData.h>
-
-@class FetchedResultsTableDataSource;
 
 @interface CatalogTableViewController : UITableViewController
 

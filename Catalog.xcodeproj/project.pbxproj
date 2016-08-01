@@ -18,6 +18,7 @@
 		4F2D8C4A1D4E759F00DBD897 /* FetchedResultsCollectionDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F2D8C491D4E759F00DBD897 /* FetchedResultsCollectionDataSource.m */; };
 		4F2D8C591D4EB72300DBD897 /* ArticleDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F2D8C581D4EB72300DBD897 /* ArticleDetailViewController.m */; };
 		4F2D8C5E1D4EF4E500DBD897 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 4F2D8C5D1D4EF4E500DBD897 /* Settings.bundle */; };
+		4F2D8C611D4F91AE00DBD897 /* FilterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F2D8C601D4F91AE00DBD897 /* FilterViewController.m */; };
 		4FAF1E871D4BB1750038F618 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FAF1E861D4BB1750038F618 /* main.m */; };
 		4FAF1E8A1D4BB1750038F618 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FAF1E891D4BB1750038F618 /* AppDelegate.m */; };
 		4FAF1E931D4BB1750038F618 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4FAF1E911D4BB1750038F618 /* Main.storyboard */; };
@@ -31,8 +32,6 @@
 		4FAF1ED61D4BBF5F0038F618 /* CatalogCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FAF1ED51D4BBF5F0038F618 /* CatalogCollectionViewController.m */; };
 		4FAF1EDA1D4BBFEB0038F618 /* CatalogCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FAF1ED81D4BBFEB0038F618 /* CatalogCollectionViewCell.m */; };
 		4FAF1EDB1D4BBFEB0038F618 /* CatalogCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4FAF1ED91D4BBFEB0038F618 /* CatalogCollectionViewCell.xib */; };
-		4FAF1EE01D4BD26C0038F618 /* ContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FAF1EDF1D4BD26C0038F618 /* ContentView.m */; };
-		4FAF1EE21D4BD28C0038F618 /* ContentView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4FAF1EE11D4BD28C0038F618 /* ContentView.xib */; };
 		F0979AB9574BA4F09EC96E03 /* libPods-CatalogUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 99A5EFFC0BD0B19087EFF47B /* libPods-CatalogUITests.a */; };
 		F4A227A3F65B76213C75DE22 /* libPods-Catalog.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 848EAFEEA1DA7BFF40CCF894 /* libPods-Catalog.a */; };
 /* End PBXBuildFile section */
@@ -75,6 +74,9 @@
 		4F2D8C571D4EB72300DBD897 /* ArticleDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArticleDetailViewController.h; sourceTree = "<group>"; };
 		4F2D8C581D4EB72300DBD897 /* ArticleDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArticleDetailViewController.m; sourceTree = "<group>"; };
 		4F2D8C5D1D4EF4E500DBD897 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = Settings.bundle; path = ../Settings.bundle; sourceTree = "<group>"; };
+		4F2D8C5F1D4F91AE00DBD897 /* FilterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FilterViewController.h; sourceTree = "<group>"; };
+		4F2D8C601D4F91AE00DBD897 /* FilterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FilterViewController.m; sourceTree = "<group>"; };
+		4F2D8C631D4F999200DBD897 /* FilterDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FilterDelegate.h; sourceTree = "<group>"; };
 		4FAF1E821D4BB1750038F618 /* Catalog.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Catalog.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4FAF1E861D4BB1750038F618 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		4FAF1E881D4BB1750038F618 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -99,9 +101,6 @@
 		4FAF1ED71D4BBFEB0038F618 /* CatalogCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CatalogCollectionViewCell.h; sourceTree = "<group>"; };
 		4FAF1ED81D4BBFEB0038F618 /* CatalogCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CatalogCollectionViewCell.m; sourceTree = "<group>"; };
 		4FAF1ED91D4BBFEB0038F618 /* CatalogCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CatalogCollectionViewCell.xib; sourceTree = "<group>"; };
-		4FAF1EDE1D4BD26C0038F618 /* ContentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContentView.h; sourceTree = "<group>"; };
-		4FAF1EDF1D4BD26C0038F618 /* ContentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContentView.m; sourceTree = "<group>"; };
-		4FAF1EE11D4BD28C0038F618 /* ContentView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ContentView.xib; sourceTree = "<group>"; };
 		5E5A1370BB212F5133A32377 /* Pods-CatalogTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CatalogTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CatalogTests/Pods-CatalogTests.debug.xcconfig"; sourceTree = "<group>"; };
 		67F4678E8938E605CC883273 /* Pods-CatalogUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CatalogUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-CatalogUITests/Pods-CatalogUITests.release.xcconfig"; sourceTree = "<group>"; };
 		848EAFEEA1DA7BFF40CCF894 /* libPods-Catalog.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Catalog.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -180,6 +179,7 @@
 				4F2D8C051D4CFBAB00DBD897 /* Importer */,
 				4F2D8C041D4CF6BA00DBD897 /* ArticlesService */,
 				4F2D8C4B1D4E7F3700DBD897 /* FetchedResultsControllerDataSourceDelegate.h */,
+				4F2D8C631D4F999200DBD897 /* FilterDelegate.h */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -256,6 +256,15 @@
 			name = ArticleDetailViewController;
 			sourceTree = "<group>";
 		};
+		4F2D8C621D4F91B600DBD897 /* FilterViewController */ = {
+			isa = PBXGroup;
+			children = (
+				4F2D8C5F1D4F91AE00DBD897 /* FilterViewController.h */,
+				4F2D8C601D4F91AE00DBD897 /* FilterViewController.m */,
+			);
+			name = FilterViewController;
+			sourceTree = "<group>";
+		};
 		4FAF1E791D4BB1750038F618 = {
 			isa = PBXGroup;
 			children = (
@@ -326,9 +335,10 @@
 		4FAF1EC11D4BBA760038F618 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				4FAF1ED31D4BBF3E0038F618 /* CatalogCollectionViewController */,
 				4FAF1ECD1D4BBD070038F618 /* CatalogTableViewController */,
+				4FAF1ED31D4BBF3E0038F618 /* CatalogCollectionViewController */,
 				4F2D8C5A1D4EB73400DBD897 /* ArticleDetailViewController */,
+				4F2D8C621D4F91B600DBD897 /* FilterViewController */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -336,7 +346,6 @@
 		4FAF1EC21D4BBA900038F618 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				4FAF1EE31D4BDABE0038F618 /* not using */,
 				4FAF1EDD1D4BC4F70038F618 /* CatalogTableViewCell */,
 				4FAF1EDC1D4BC4ED0038F618 /* CatalogCollectionViewCell */,
 			);
@@ -379,16 +388,6 @@
 				4FAF1ED01D4BBEB10038F618 /* CatalogTableViewCell.xib */,
 			);
 			name = CatalogTableViewCell;
-			sourceTree = "<group>";
-		};
-		4FAF1EE31D4BDABE0038F618 /* not using */ = {
-			isa = PBXGroup;
-			children = (
-				4FAF1EDE1D4BD26C0038F618 /* ContentView.h */,
-				4FAF1EE11D4BD28C0038F618 /* ContentView.xib */,
-				4FAF1EDF1D4BD26C0038F618 /* ContentView.m */,
-			);
-			name = "not using";
 			sourceTree = "<group>";
 		};
 		73E025AF048B13EB1CE81CB9 /* Frameworks */ = {
@@ -519,7 +518,6 @@
 				4FAF1E981D4BB1750038F618 /* LaunchScreen.storyboard in Resources */,
 				4FAF1E951D4BB1750038F618 /* Assets.xcassets in Resources */,
 				4FAF1E931D4BB1750038F618 /* Main.storyboard in Resources */,
-				4FAF1EE21D4BD28C0038F618 /* ContentView.xib in Resources */,
 				4FAF1ED21D4BBEB10038F618 /* CatalogTableViewCell.xib in Resources */,
 				4F2D8C5E1D4EF4E500DBD897 /* Settings.bundle in Resources */,
 			);
@@ -670,7 +668,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				4F2D8C3B1D4D705E00DBD897 /* ModelObject.m in Sources */,
-				4FAF1EE01D4BD26C0038F618 /* ContentView.m in Sources */,
 				4F2D8C371D4D6FF200DBD897 /* Article.m in Sources */,
 				4F2D8C471D4E6C9500DBD897 /* FetchedResultsTableDataSource.m in Sources */,
 				4F2D8C341D4D369E00DBD897 /* Catalog.xcdatamodeld in Sources */,
@@ -678,6 +675,7 @@
 				4FAF1E8A1D4BB1750038F618 /* AppDelegate.m in Sources */,
 				4FAF1E871D4BB1750038F618 /* main.m in Sources */,
 				4F2D8C3E1D4D772A00DBD897 /* PersistentStack.m in Sources */,
+				4F2D8C611D4F91AE00DBD897 /* FilterViewController.m in Sources */,
 				4FAF1ED61D4BBF5F0038F618 /* CatalogCollectionViewController.m in Sources */,
 				4FAF1ED11D4BBEB10038F618 /* CatalogTableViewCell.m in Sources */,
 				4F2D8C4A1D4E759F00DBD897 /* FetchedResultsCollectionDataSource.m in Sources */,

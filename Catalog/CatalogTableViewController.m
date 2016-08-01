@@ -14,8 +14,9 @@
 #import "AFNetworking.h"
 #import "UIImageView+AFNetworking.h"
 #import "ArticleDetailViewController.h"
+#import "FilterDelegate.h"
 
-@interface CatalogTableViewController() <FetchedResultsControllerDataSourceDelegate>
+@interface CatalogTableViewController() <FetchedResultsControllerDataSourceDelegate, FilterDelegate>
 
 @property (nonatomic, strong) FetchedResultsTableDataSource *dataSource;
 
@@ -29,42 +30,6 @@ static NSString * const reuseIdentifier = @"CatalogTableViewCell";
 	[super viewDidLoad];
 	[self registerCell];
 	[self setupDataSource];
-	UIBarButtonItem *anotherButton = [[UIBarButtonItem alloc] initWithTitle:@"filterByname" style:UIBarButtonItemStylePlain
-																																	 target:self action:@selector(filterByname)];
-	self.navigationItem.rightBarButtonItem = anotherButton;
-}
-
-- (void)filterByname {
-
- NSPredicate *fetchPredicate = [NSPredicate predicateWithFormat:@"title CONTAINS[cd] %@",
-													 @"From"];
-
-
-
-	NSFetchedResultsController* fetchedResultsController = self.dataSource.fetchedResultsController;
-
-	[[fetchedResultsController fetchRequest] setPredicate:fetchPredicate];
-
-	[NSFetchedResultsController deleteCacheWithName:@"Article"];
-
-	NSError * error;
-	if (![fetchedResultsController performFetch:&error]){
-			//TODO:: handleerror
-	}
-	[self.tableView reloadData];
-}
-
-- (void)order {
-	NSArray *sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"title" ascending:YES]];
-	NSFetchedResultsController* fetchedResultsController = self.dataSource.fetchedResultsController;
-
-	[[fetchedResultsController fetchRequest] setSortDescriptors:sortDescriptors];
-	NSError *error;
-	if (![fetchedResultsController performFetch:&error]) {
-			//TODO:: handleerror
-	}
-
-	[self.tableView reloadData];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -82,11 +47,13 @@ static NSString * const reuseIdentifier = @"CatalogTableViewCell";
 	self.dataSource = [[FetchedResultsTableDataSource alloc] initWithTableView:self.tableView];
 	self.dataSource.delegate = self;
 	self.dataSource.fetchedResultsController = [self createResultsController];
+
 	self.dataSource.reuseIdentifier = reuseIdentifier;
 }
 
 - (NSFetchedResultsController *)createResultsController {
 	NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Article"];
+	[request setFetchBatchSize:3];
 	request.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"identifier" ascending:YES]];
 	AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
 	return [[NSFetchedResultsController alloc] initWithFetchRequest:request
@@ -125,6 +92,15 @@ static NSString * const reuseIdentifier = @"CatalogTableViewCell";
 	AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
 	[appDelegate.managedObjectContext deleteObject:object];
 	[appDelegate.managedObjectContext save:nil];
+}
+
+#pragma mark FilterDelegate
+- (void)reload {
+	[self.tableView reloadData];
+}
+
+- (NSFetchedResultsController *)fetchedResultsController {
+	return self.dataSource.fetchedResultsController;
 }
 
 

@@ -17,6 +17,7 @@
 		4F2D8C471D4E6C9500DBD897 /* FetchedResultsTableDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F2D8C461D4E6C9500DBD897 /* FetchedResultsTableDataSource.m */; };
 		4F2D8C4A1D4E759F00DBD897 /* FetchedResultsCollectionDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F2D8C491D4E759F00DBD897 /* FetchedResultsCollectionDataSource.m */; };
 		4F2D8C591D4EB72300DBD897 /* ArticleDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F2D8C581D4EB72300DBD897 /* ArticleDetailViewController.m */; };
+		4F2D8C5E1D4EF4E500DBD897 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 4F2D8C5D1D4EF4E500DBD897 /* Settings.bundle */; };
 		4FAF1E871D4BB1750038F618 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FAF1E861D4BB1750038F618 /* main.m */; };
 		4FAF1E8A1D4BB1750038F618 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FAF1E891D4BB1750038F618 /* AppDelegate.m */; };
 		4FAF1E931D4BB1750038F618 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4FAF1E911D4BB1750038F618 /* Main.storyboard */; };
@@ -73,6 +74,7 @@
 		4F2D8C4B1D4E7F3700DBD897 /* FetchedResultsControllerDataSourceDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FetchedResultsControllerDataSourceDelegate.h; sourceTree = "<group>"; };
 		4F2D8C571D4EB72300DBD897 /* ArticleDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArticleDetailViewController.h; sourceTree = "<group>"; };
 		4F2D8C581D4EB72300DBD897 /* ArticleDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArticleDetailViewController.m; sourceTree = "<group>"; };
+		4F2D8C5D1D4EF4E500DBD897 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = Settings.bundle; path = ../Settings.bundle; sourceTree = "<group>"; };
 		4FAF1E821D4BB1750038F618 /* Catalog.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Catalog.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4FAF1E861D4BB1750038F618 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		4FAF1E881D4BB1750038F618 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -290,6 +292,7 @@
 				4FAF1E991D4BB1750038F618 /* Info.plist */,
 				4FAF1E851D4BB1750038F618 /* Supporting Files */,
 				4F2D8C321D4D369E00DBD897 /* Catalog.xcdatamodeld */,
+				4F2D8C5D1D4EF4E500DBD897 /* Settings.bundle */,
 			);
 			path = Catalog;
 			sourceTree = "<group>";
@@ -518,6 +521,7 @@
 				4FAF1E931D4BB1750038F618 /* Main.storyboard in Resources */,
 				4FAF1EE21D4BD28C0038F618 /* ContentView.xib in Resources */,
 				4FAF1ED21D4BBEB10038F618 /* CatalogTableViewCell.xib in Resources */,
+				4F2D8C5E1D4EF4E500DBD897 /* Settings.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

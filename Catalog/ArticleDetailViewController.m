@@ -9,6 +9,7 @@
 #import "ArticleDetailViewController.h"
 #import "Article.h"
 #import "AFNetworking.h"
+#import "AppDelegate.h"
 #import "UIImageView+AFNetworking.h"
 
 @interface ArticleDetailViewController()
@@ -40,6 +41,17 @@
 															 placeholderImage:[UIImage imageNamed:@"placeholder"]
 																				success:nil
 																				failure:nil];
+
+	UIBarButtonItem *anotherButton = [[UIBarButtonItem alloc] initWithTitle:@"Delete" style:UIBarButtonItemStylePlain
+																																	 target:self action:@selector(deleteArticle)];
+	self.navigationItem.rightBarButtonItem = anotherButton;
+}
+
+- (void)deleteArticle {
+	AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
+	[appDelegate.managedObjectContext deleteObject:self.article];
+	[appDelegate.managedObjectContext save:nil];
+	[self.navigationController popToRootViewControllerAnimated:YES];
 }
 
 - (IBAction)articleImageClicked:(id)sender {

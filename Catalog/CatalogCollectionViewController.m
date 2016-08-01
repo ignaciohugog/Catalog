@@ -67,7 +67,7 @@ static NSString * const reuseIdentifier = @"CatalogCollectionViewCell";
 - (void)configureCell:(CatalogCollectionViewCell *)cell withObject:(Article*)object {
 	cell.subtitle.text = object.author;
 	cell.nameLabel.text = object.title;
-	
+	[cell setFontSize];
 	NSURLRequest *imageRequest = [NSURLRequest requestWithURL:[NSURL URLWithString:object.smallImageUrl]
 																								cachePolicy:NSURLRequestReturnCacheDataElseLoad
 																						timeoutInterval:60];
@@ -77,9 +77,6 @@ static NSString * const reuseIdentifier = @"CatalogCollectionViewCell";
 																				failure:nil];
 }
 
-- (void)deleteObject:(id)object {
-
-}
 
 #pragma mark <UICollectionViewDelegate>
 

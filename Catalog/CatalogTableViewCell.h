@@ -14,4 +14,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *subtitle;
 @property (weak, nonatomic) IBOutlet UIImageView *articleImageView;
 
+- (void)setFontSize;
+
 @end

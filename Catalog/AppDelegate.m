@@ -20,6 +20,7 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+	[self setAppDefaults];
 	self.persistentStack = [[PersistentStack alloc] initWithStoreURL:self.storeURL modelURL:self.modelURL];
 	self.webservice = [[ArticlesService alloc] init];
 	self.importer = [[Importer alloc] initWithContext:self.persistentStack.backgroundManagedObjectContext webservice:self.webservice];
@@ -27,6 +28,13 @@
 	return YES;
 }
 
+- (void)setAppDefaults {
+	NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+	NSDictionary *appDefaults = [NSDictionary dictionaryWithObject:@17
+																													forKey:@"font_size"];
+	[defaults registerDefaults:appDefaults];
+	[defaults synchronize];
+}
 #pragma mark - Core Data stack
 
 - (void)saveContext {

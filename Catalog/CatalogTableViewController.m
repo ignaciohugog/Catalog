@@ -70,6 +70,7 @@ static NSString * const reuseIdentifier = @"CatalogTableViewCell";
 - (void)viewWillAppear:(BOOL)animated {
 	self.tableView.estimatedRowHeight = 150;
 	self.tableView.rowHeight = UITableViewAutomaticDimension;
+	[self.tableView reloadData];
 }
 
 - (void)registerCell {
@@ -109,6 +110,7 @@ static NSString * const reuseIdentifier = @"CatalogTableViewCell";
 - (void)configureCell:(CatalogTableViewCell *)cell withObject:(Article*)object {
 	cell.subtitle.text = object.author;
 	cell.nameLabel.text = object.title;
+	[cell setFontSize];
 
 	NSURLRequest *imageRequest = [NSURLRequest requestWithURL:[NSURL URLWithString:object.smallImageUrl]
 																								cachePolicy:NSURLRequestReturnCacheDataElseLoad
@@ -120,7 +122,9 @@ static NSString * const reuseIdentifier = @"CatalogTableViewCell";
 }
 
 - (void)deleteObject:(id)object {
-
+	AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
+	[appDelegate.managedObjectContext deleteObject:object];
+	[appDelegate.managedObjectContext save:nil];
 }
 
 

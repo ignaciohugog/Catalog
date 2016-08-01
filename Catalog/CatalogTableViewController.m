@@ -29,6 +29,42 @@ static NSString * const reuseIdentifier = @"CatalogTableViewCell";
 	[super viewDidLoad];
 	[self registerCell];
 	[self setupDataSource];
+	UIBarButtonItem *anotherButton = [[UIBarButtonItem alloc] initWithTitle:@"filterByname" style:UIBarButtonItemStylePlain
+																																	 target:self action:@selector(filterByname)];
+	self.navigationItem.rightBarButtonItem = anotherButton;
+}
+
+- (void)filterByname {
+
+ NSPredicate *fetchPredicate = [NSPredicate predicateWithFormat:@"title CONTAINS[cd] %@",
+													 @"From"];
+
+
+
+	NSFetchedResultsController* fetchedResultsController = self.dataSource.fetchedResultsController;
+
+	[[fetchedResultsController fetchRequest] setPredicate:fetchPredicate];
+
+	[NSFetchedResultsController deleteCacheWithName:@"Article"];
+
+	NSError * error;
+	if (![fetchedResultsController performFetch:&error]){
+			//TODO:: handleerror
+	}
+	[self.tableView reloadData];
+}
+
+- (void)order {
+	NSArray *sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"title" ascending:YES]];
+	NSFetchedResultsController* fetchedResultsController = self.dataSource.fetchedResultsController;
+
+	[[fetchedResultsController fetchRequest] setSortDescriptors:sortDescriptors];
+	NSError *error;
+	if (![fetchedResultsController performFetch:&error]) {
+			//TODO:: handleerror
+	}
+
+	[self.tableView reloadData];
 }
 
 - (void)viewWillAppear:(BOOL)animated {

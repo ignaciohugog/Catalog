@@ -50,7 +50,8 @@
 				article.channel = podSpec[@"channel"];
 				article.author = podSpec[@"author"];
 					//article.publishDate = podSpec[@"publishDate"];
-				article.imageUrl = podSpec[@"imageUrl"];
+				article.smallImageUrl = podSpec[@"imageUrl"];
+				article.smallImageUrl = podSpec[@"square3Url"];
 
 					//[article loadFromDictionary:podSpec];
 			}

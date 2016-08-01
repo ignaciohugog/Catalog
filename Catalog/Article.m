@@ -16,7 +16,8 @@
 @dynamic channel;
 @dynamic author;
 @dynamic publishDate;
-@dynamic imageUrl;
+@dynamic smallImageUrl;
+@dynamic bigImageUrl;
 
 - (void)loadFromDictionary:(NSDictionary *)dictionary {
 	self.identifier = dictionary[@"id"];
@@ -25,7 +26,8 @@
 	self.channel = dictionary[@"channel"];
 	self.author = dictionary[@"author"];
 	self.publishDate = dictionary[@"publishDate"];
-	self.imageUrl = dictionary[@"imageUrl"];
+	self.smallImageUrl = dictionary[@"imageUrl"];
+	self.bigImageUrl = dictionary[@"square3Url"];
 }
 
 + (Article *)findOrCreatePodWithIdentifier:(NSString *)identifier inContext:(NSManagedObjectContext *)context {

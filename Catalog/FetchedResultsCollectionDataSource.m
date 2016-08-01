@@ -42,10 +42,9 @@
 	return [self.fetchedResultsController objectAtIndexPath:indexPath];
 }
 
-- (id)selectedItem
-{
-		//NSIndexPath* path = self.collectionView.indexPathForSelectedRow;
-		//return path ? [self.fetchedResultsController objectAtIndexPath:path] : nil;
+- (id)selectedItem {
+	NSIndexPath *path = [[self.collectionView indexPathsForSelectedItems] objectAtIndex:0];
+	return path ? [self.fetchedResultsController objectAtIndexPath:path] : nil;
 	return nil;
 }
 

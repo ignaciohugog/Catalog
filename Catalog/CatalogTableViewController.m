@@ -13,6 +13,7 @@
 #import "Article.h"
 #import "AFNetworking.h"
 #import "UIImageView+AFNetworking.h"
+#import "ArticleDetailViewController.h"
 
 @interface CatalogTableViewController() <FetchedResultsControllerDataSourceDelegate>
 
@@ -57,13 +58,23 @@ static NSString * const reuseIdentifier = @"CatalogTableViewCell";
 																												cacheName:nil];
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+	[self performSegueWithIdentifier:@"detail" sender:nil];
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+	ArticleDetailViewController *detailViewController = segue.destinationViewController;
+	detailViewController.article = self.dataSource.selectedItem;
+}
+
+
 #pragma mark FetchedResultsControllerDataSourceDelegate
 
 - (void)configureCell:(CatalogTableViewCell *)cell withObject:(Article*)object {
 	cell.subtitle.text = object.author;
 	cell.nameLabel.text = object.title;
 
-	NSURLRequest *imageRequest = [NSURLRequest requestWithURL:[NSURL URLWithString:object.imageUrl]
+	NSURLRequest *imageRequest = [NSURLRequest requestWithURL:[NSURL URLWithString:object.smallImageUrl]
 																								cachePolicy:NSURLRequestReturnCacheDataElseLoad
 																						timeoutInterval:60];
 	[cell.articleImageView setImageWithURLRequest:imageRequest

@@ -18,7 +18,8 @@
 @property (nonatomic, retain) NSString * channel;
 @property (nonatomic, retain) NSString * author;
 @property (nonatomic, retain) NSString * publishDate;
-@property (nonatomic, retain) NSString * imageUrl;
+@property (nonatomic, retain) NSString * smallImageUrl;
+@property (nonatomic, retain) NSString * bigImageUrl;
 
 - (void)loadFromDictionary:(NSDictionary *)dictionary;
 + (Article *)findOrCreatePodWithIdentifier:(NSString *)identifier inContext:(NSManagedObjectContext *)context;

@@ -16,6 +16,7 @@
 		4F2D8C3E1D4D772A00DBD897 /* PersistentStack.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F2D8C3D1D4D772A00DBD897 /* PersistentStack.m */; };
 		4F2D8C471D4E6C9500DBD897 /* FetchedResultsTableDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F2D8C461D4E6C9500DBD897 /* FetchedResultsTableDataSource.m */; };
 		4F2D8C4A1D4E759F00DBD897 /* FetchedResultsCollectionDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F2D8C491D4E759F00DBD897 /* FetchedResultsCollectionDataSource.m */; };
+		4F2D8C591D4EB72300DBD897 /* ArticleDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F2D8C581D4EB72300DBD897 /* ArticleDetailViewController.m */; };
 		4FAF1E871D4BB1750038F618 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FAF1E861D4BB1750038F618 /* main.m */; };
 		4FAF1E8A1D4BB1750038F618 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FAF1E891D4BB1750038F618 /* AppDelegate.m */; };
 		4FAF1E931D4BB1750038F618 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4FAF1E911D4BB1750038F618 /* Main.storyboard */; };
@@ -70,6 +71,8 @@
 		4F2D8C481D4E759F00DBD897 /* FetchedResultsCollectionDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FetchedResultsCollectionDataSource.h; sourceTree = "<group>"; };
 		4F2D8C491D4E759F00DBD897 /* FetchedResultsCollectionDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FetchedResultsCollectionDataSource.m; sourceTree = "<group>"; };
 		4F2D8C4B1D4E7F3700DBD897 /* FetchedResultsControllerDataSourceDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FetchedResultsControllerDataSourceDelegate.h; sourceTree = "<group>"; };
+		4F2D8C571D4EB72300DBD897 /* ArticleDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArticleDetailViewController.h; sourceTree = "<group>"; };
+		4F2D8C581D4EB72300DBD897 /* ArticleDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArticleDetailViewController.m; sourceTree = "<group>"; };
 		4FAF1E821D4BB1750038F618 /* Catalog.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Catalog.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4FAF1E861D4BB1750038F618 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		4FAF1E881D4BB1750038F618 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -242,6 +245,15 @@
 			name = Article;
 			sourceTree = "<group>";
 		};
+		4F2D8C5A1D4EB73400DBD897 /* ArticleDetailViewController */ = {
+			isa = PBXGroup;
+			children = (
+				4F2D8C571D4EB72300DBD897 /* ArticleDetailViewController.h */,
+				4F2D8C581D4EB72300DBD897 /* ArticleDetailViewController.m */,
+			);
+			name = ArticleDetailViewController;
+			sourceTree = "<group>";
+		};
 		4FAF1E791D4BB1750038F618 = {
 			isa = PBXGroup;
 			children = (
@@ -267,11 +279,11 @@
 		4FAF1E841D4BB1750038F618 /* Catalog */ = {
 			isa = PBXGroup;
 			children = (
-				4FAF1E881D4BB1750038F618 /* AppDelegate.h */,
-				4FAF1E891D4BB1750038F618 /* AppDelegate.m */,
 				4F2D8C381D4D6FFA00DBD897 /* Models */,
 				4FAF1EC21D4BBA900038F618 /* Views */,
 				4FAF1EC11D4BBA760038F618 /* Controllers */,
+				4FAF1E881D4BB1750038F618 /* AppDelegate.h */,
+				4FAF1E891D4BB1750038F618 /* AppDelegate.m */,
 				4FAF1E911D4BB1750038F618 /* Main.storyboard */,
 				4FAF1E941D4BB1750038F618 /* Assets.xcassets */,
 				4FAF1E961D4BB1750038F618 /* LaunchScreen.storyboard */,
@@ -313,6 +325,7 @@
 			children = (
 				4FAF1ED31D4BBF3E0038F618 /* CatalogCollectionViewController */,
 				4FAF1ECD1D4BBD070038F618 /* CatalogTableViewController */,
+				4F2D8C5A1D4EB73400DBD897 /* ArticleDetailViewController */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -666,6 +679,7 @@
 				4F2D8C4A1D4E759F00DBD897 /* FetchedResultsCollectionDataSource.m in Sources */,
 				4F2D8C031D4CF6B300DBD897 /* ArticlesService.m in Sources */,
 				4FAF1EDA1D4BBFEB0038F618 /* CatalogCollectionViewCell.m in Sources */,
+				4F2D8C591D4EB72300DBD897 /* ArticleDetailViewController.m in Sources */,
 				4FAF1EBD1D4BB9A70038F618 /* CatalogTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

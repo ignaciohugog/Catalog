@@ -7,13 +7,13 @@
 //
 
 #import "Importer.h"
-#import "Article.h"
+#import "UpdateArticleEntities.h"
 
 @interface Importer ()
 
 @property (nonatomic, strong) NSManagedObjectContext *context;
 @property (nonatomic, strong) ArticlesService *webservice;
-@property (nonatomic) int batchCount;
+
 @end
 
 @implementation Importer
@@ -28,21 +28,13 @@
 }
 
 - (void)import {
-	self.batchCount = 0;
 	[self.webservice fetchAllArticles:^(NSArray *articles) {
 		[self.context performBlock:^ {
-			for(NSDictionary *podSpec in articles) {
-				NSString *identifier = podSpec[@"id"];
-				Article *article = [Article findOrCreatePodWithIdentifier:identifier inContext:self.context];
-				[article loadFromDictionary:podSpec];
-			}
-				//self.batchCount++;
-				//if (self.batchCount % 10 == 0) {
-				NSError *error = nil;
-				[self.context save:&error];
-				if (error) {
-					NSLog(@"Error: %@", error.localizedDescription);
-						//}
+			[UpdateArticleEntities findOrCreateArticles:articles inContext:self.context];
+			NSError *error = nil;
+			[self.context save:&error];
+			if (error) {
+				NSLog(@"Error: %@", error.localizedDescription);					
 			}
 		}];
 	}];

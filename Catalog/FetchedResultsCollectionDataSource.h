@@ -6,22 +6,11 @@
 //  Copyright © 2016 Ignacio H. Gomez. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
-#import <CoreData/CoreData.h>
 #import <UIKit/UIKit.h>
-#import "FetchedResultsControllerDataSourceDelegate.h"
+#import "FetchedResultsDataSource.h"
 
-@class NSFetchedResultsController;
+@interface FetchedResultsCollectionDataSource : FetchedResultsDataSource <UICollectionViewDataSource>
 
-@interface FetchedResultsCollectionDataSource : NSObject <UICollectionViewDataSource, NSFetchedResultsControllerDelegate>
-
-@property (nonatomic, strong) NSFetchedResultsController* fetchedResultsController;
-@property (nonatomic, weak) id<FetchedResultsControllerDataSourceDelegate> delegate;
-@property (nonatomic, copy) NSString* reuseIdentifier;
-@property (nonatomic) BOOL paused;
-
-- (id)initWithTableView:(UICollectionView*)collectionView;
-- (id)objectAtIndexPath:(NSIndexPath*)indexPath;
-- (id)selectedItem;
+- (id)initWithCollectionView:(UICollectionView*)collectionView;
 
 @end

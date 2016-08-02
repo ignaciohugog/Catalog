@@ -8,30 +8,41 @@
 
 #import "ArticlesService.h"
 
+#define kCLIENTID @"DAOS4SYzZzmshCAAlhNN61AZzfGrp1jZ0j8jsn7h37w3ZyaXBq"
+
+@interface ArticlesService () {
+	AFHTTPSessionManager *_manager;
+}
+@end
+
 @implementation ArticlesService
 
-- (void)fetchAllArticles:(void (^)(NSArray *pods))callback {
-	[self fetchArticles:callback page:0];
+- (instancetype)init{
+	self = [super init];
+	if (self){
+		_manager = [self manager];
+	}
+	return self;
 }
 
-- (void)fetchArticles:(void (^)(NSArray *pods))callback page:(NSUInteger)page {
-
-		// TODO: create singleton
-		// TODO: dictionary for parameters
-		// TODO: fix harcoded number of pages
-	AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+- (AFHTTPSessionManager *)manager{
+	AFHTTPSessionManager *manager = [AFHTTPSessionManager new];
 	manager.requestSerializer = [AFJSONRequestSerializer serializer];
 	[manager.requestSerializer setValue:@"application/json" forHTTPHeaderField:@"Accept"];
-	[manager.requestSerializer setValue:@"DAOS4SYzZzmshCAAlhNN61AZzfGrp1jZ0j8jsn7h37w3ZyaXBq" forHTTPHeaderField:@"X-Mashape-Key"];
-	[manager POST:@"https://devru-instructables.p.mashape.com/list?limit=10&offset=0&sort=recent&type=id" parameters:nil progress:nil success:^(NSURLSessionTask *task, id responseObject) {
-		callback(responseObject[@"items"]);
-		if (page + 1 < 10) {
-				//	[self fetchArticles:callback page:page + 1];
-		}
-	} failure:^(NSURLSessionTask *operation, NSError *error) {
-		callback(nil);
-		NSLog(@"Error: %@", error);
-	}];
+	[manager.requestSerializer setValue:kCLIENTID forHTTPHeaderField:@"X-Mashape-Key"];
+	return manager;
+}
+
+- (void)fetchAllArticles:(void (^)(NSArray *pods))callback {
+	[_manager POST:@"https://devru-instructables.p.mashape.com/list?limit=100&offset=0&sort=recent"
+			parameters:nil
+				progress:nil
+				 success:^(NSURLSessionTask *task, id responseObject) {
+					 callback(responseObject[@"items"]);
+				 } failure:^(NSURLSessionTask *operation, NSError *error) {
+					 callback(nil);
+					 NSLog(@"Error: %@", error);
+				 }];
 }
 
 @end

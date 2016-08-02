@@ -1,19 +1,15 @@
 //
-//  FetchedResultsControllerDataSource.m
+//  FetchedResultsTableDataSource.m
 //  Catalog
 //
 //  Created by Ignacio H. Gomez on 7/31/16.
 //  Copyright © 2016 Ignacio H. Gomez. All rights reserved.
 //
 
-#import <CoreData/CoreData.h>
 #import "FetchedResultsTableDataSource.h"
 
-
 @interface FetchedResultsTableDataSource ()
-
 @property (nonatomic, strong) UITableView* tableView;
-
 @end
 
 @implementation FetchedResultsTableDataSource
@@ -27,13 +23,8 @@
 	return self;
 }
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView*)tableView {
-	return self.fetchedResultsController.sections.count;
-}
-
-- (NSInteger)tableView:(UITableView*)tableView numberOfRowsInSection:(NSInteger)sectionIndex {
-	id<NSFetchedResultsSectionInfo> section = self.fetchedResultsController.sections[sectionIndex];
-	return section.numberOfObjects;
+- (NSInteger)tableView:(UITableView*)tableView numberOfRowsInSection:(NSInteger)section {
+	return [self rowsInSection:section];
 }
 
 - (UITableViewCell*)tableView:(UITableView*)tableView cellForRowAtIndexPath:(NSIndexPath*)indexPath {
@@ -41,10 +32,6 @@
 	id cell = [tableView dequeueReusableCellWithIdentifier:self.reuseIdentifier forIndexPath:indexPath];
 	[self.delegate configureCell:cell withObject:object];
 	return cell;
-}
-
-- (id)objectAtIndexPath:(NSIndexPath*)indexPath {
-	return [self.fetchedResultsController objectAtIndexPath:indexPath];
 }
 
 - (BOOL)tableView:(UITableView*)tableView canEditRowAtIndexPath:(NSIndexPath*)indexPath {
@@ -57,6 +44,11 @@
 	}
 }
 
+- (id)selectedItem {
+	NSIndexPath* path = self.tableView.indexPathForSelectedRow;
+	return path ? [self.fetchedResultsController objectAtIndexPath:path] : nil;
+}
+
 #pragma mark NSFetchedResultsControllerDelegate
 
 - (void)controllerWillChangeContent:(NSFetchedResultsController*)controller {
@@ -67,7 +59,10 @@
 	[self.tableView endUpdates];
 }
 
-- (void)controller:(NSFetchedResultsController*)controller didChangeObject:(id)anObject atIndexPath:(NSIndexPath*)indexPath forChangeType:(NSFetchedResultsChangeType)type newIndexPath:(NSIndexPath*)newIndexPath {
+- (void)controller:(NSFetchedResultsController*)controller didChangeObject:(id)anObject
+			 atIndexPath:(NSIndexPath*)indexPath
+		 forChangeType:(NSFetchedResultsChangeType)type
+			newIndexPath:(NSIndexPath*)newIndexPath {
 	if (type == NSFetchedResultsChangeInsert) {
 		[self.tableView insertRowsAtIndexPaths:@[newIndexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
 	} else if (type == NSFetchedResultsChangeMove) {
@@ -81,17 +76,6 @@
 	} else {
 		NSAssert(NO,@"");
 	}
-}
-
-- (void)setFetchedResultsController:(NSFetchedResultsController*)fetchedResultsController {
-	_fetchedResultsController = fetchedResultsController;
-	fetchedResultsController.delegate = self;
-	[fetchedResultsController performFetch:NULL];
-}
-
-- (id)selectedItem {
-	NSIndexPath* path = self.tableView.indexPathForSelectedRow;
-	return path ? [self.fetchedResultsController objectAtIndexPath:path] : nil;
 }
 
 

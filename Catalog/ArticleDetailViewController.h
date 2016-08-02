@@ -10,8 +10,14 @@
 
 @class Article;
 
+@protocol DetailDelegate
+@optional
+- (void)deleteObject:(Article *)object;
+@end
+
 @interface ArticleDetailViewController : UIViewController
 
 @property (nonatomic) Article *article;
+@property (nonatomic, weak) id <DetailDelegate> delegate;
 
 @end

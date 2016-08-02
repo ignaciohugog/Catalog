@@ -8,9 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@class PersistentStack;
 @class ArticlesService;
-@class Importer;
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 

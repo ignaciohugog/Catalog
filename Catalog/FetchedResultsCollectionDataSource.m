@@ -10,14 +10,12 @@
 #import "UICollectionView+NSFetchedResultsController.h"
 
 @interface FetchedResultsCollectionDataSource ()
-
 @property (nonatomic, strong) UICollectionView* collectionView;
-
 @end
 
 @implementation FetchedResultsCollectionDataSource
 
-- (id)initWithTableView:(UICollectionView*)collectionView {
+- (id)initWithCollectionView:(UICollectionView*)collectionView {
 	self = [super init];
 	if (self) {
 		self.collectionView = collectionView;
@@ -26,9 +24,8 @@
 	return self;
 }
 
-- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)sectionIndex {
-	id<NSFetchedResultsSectionInfo> section = self.fetchedResultsController.sections[sectionIndex];
-	return section.numberOfObjects;
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
+	return [self rowsInSection:section];
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
@@ -38,14 +35,9 @@
 	return cell;
 }
 
-- (id)objectAtIndexPath:(NSIndexPath*)indexPath {
-	return [self.fetchedResultsController objectAtIndexPath:indexPath];
-}
-
 - (id)selectedItem {
 	NSIndexPath *path = [[self.collectionView indexPathsForSelectedItems] objectAtIndex:0];
-	return path ? [self.fetchedResultsController objectAtIndexPath:path] : nil;
-	return nil;
+	return path ? [self objectAtIndexPath:path] : nil;
 }
 
 #pragma mark NSFetchedResultsControllerDelegate
@@ -63,12 +55,6 @@
 
 - (void)controllerDidChangeContent:(NSFetchedResultsController *)controller {
 	[self.collectionView commitChanges];
-}
-
-- (void)setFetchedResultsController:(NSFetchedResultsController*)fetchedResultsController {
-	_fetchedResultsController = fetchedResultsController;
-	fetchedResultsController.delegate = self;
-	[fetchedResultsController performFetch:NULL];
 }
 
 @end

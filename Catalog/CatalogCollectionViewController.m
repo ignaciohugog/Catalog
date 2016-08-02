@@ -17,18 +17,28 @@
 #import "ArticleDetailViewController.h"
 #import "FilterDelegate.h"
 
-@interface CatalogCollectionViewController () <FetchedResultsControllerDataSourceDelegate, FilterDelegate>
+@interface CatalogCollectionViewController () <FetchedResultsControllerDataSourceDelegate, FilterDelegate, UICollectionViewDelegateFlowLayout>
 @property (nonatomic, strong) FetchedResultsCollectionDataSource *dataSource;
+@property (nonatomic, strong) NSManagedObjectContext *managedObjectContext;
 @end
 
 @implementation CatalogCollectionViewController
 
 static NSString * const reuseIdentifier = @"CatalogCollectionViewCell";
 
+- (id)initWithCoder:(NSCoder *)aDecoder {
+	if (self = [super initWithCoder:aDecoder]) {
+		AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
+		self.managedObjectContext = appDelegate.managedObjectContext;
+	}
+	return self;
+}
+
 - (void)viewDidLoad {
 	[super viewDidLoad];
 	[self registerCell];
 	[self setupDataSource];
+	self.automaticallyAdjustsScrollViewInsets = NO;
 }
 
 - (void)registerCell {
@@ -37,7 +47,7 @@ static NSString * const reuseIdentifier = @"CatalogCollectionViewCell";
 }
 
 - (void)setupDataSource {
-	self.dataSource = [[FetchedResultsCollectionDataSource alloc] initWithTableView:self.collectionView];
+	self.dataSource = [[FetchedResultsCollectionDataSource alloc] initWithCollectionView:self.collectionView];
 	self.dataSource.delegate = self;
 	self.dataSource.fetchedResultsController = [self createResultsController];
 	self.dataSource.reuseIdentifier = reuseIdentifier;
@@ -46,9 +56,9 @@ static NSString * const reuseIdentifier = @"CatalogCollectionViewCell";
 - (NSFetchedResultsController *)createResultsController {
 	NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Article"];
 	request.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"identifier" ascending:YES]];
-	AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
+	[request setFetchBatchSize:50];
 	return [[NSFetchedResultsController alloc] initWithFetchRequest:request
-																						 managedObjectContext:appDelegate.managedObjectContext
+																						 managedObjectContext:self.managedObjectContext
 																							 sectionNameKeyPath:nil
 																												cacheName:nil];
 }
@@ -74,6 +84,21 @@ static NSString * const reuseIdentifier = @"CatalogCollectionViewCell";
 																				failure:nil];
 }
 
+- (CGSize)collectionView:(UICollectionView *)collectionView
+									layout:(UICollectionViewLayout *)collectionViewLayout
+	sizeForItemAtIndexPath:(NSIndexPath *)indexPath
+{
+	CGFloat padding = 15;
+	CGFloat cellSize = collectionView.frame.size.width - padding;
+
+	return CGSizeMake(cellSize / 2, cellSize / 1.5);
+
+
+}
+
+- (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation {
+	[self.collectionView reloadData];
+}
 
 #pragma mark <UICollectionViewDelegate>
 

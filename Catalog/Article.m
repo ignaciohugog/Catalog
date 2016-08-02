@@ -30,20 +30,4 @@
 	self.bigImageUrl = dictionary[@"square3Url"];
 }
 
-+ (Article *)findOrCreatePodWithIdentifier:(NSString *)identifier inContext:(NSManagedObjectContext *)context {
-	NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:[self entityName]];
-	fetchRequest.predicate = [NSPredicate predicateWithFormat:@"identifier = %@", identifier];
-	NSError *error = nil;
-	NSArray *result = [context executeFetchRequest:fetchRequest error:&error];
-	if (error) {
-		NSLog(@"error: %@", error.localizedDescription);
-	}
-	if (result.lastObject) {
-		return result.lastObject;
-	} else {
-		Article *article = [self insertNewObjectIntoContext:context];
-		article.identifier = identifier;
-		return article;
-	}
-}
 @end

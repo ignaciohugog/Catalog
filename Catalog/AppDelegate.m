@@ -21,9 +21,11 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 	[self setAppDefaults];
-	self.persistentStack = [[PersistentStack alloc] initWithStoreURL:self.storeURL modelURL:self.modelURL];
+	self.persistentStack = [[PersistentStack alloc] initWithStoreURL:self.storeURL
+																													modelURL:self.modelURL];
 	self.webservice = [[ArticlesService alloc] init];
-	self.importer = [[Importer alloc] initWithContext:self.persistentStack.backgroundManagedObjectContext webservice:self.webservice];
+	self.importer = [[Importer alloc] initWithContext:self.persistentStack.backgroundManagedObjectContext
+																				 webservice:self.webservice];
 	[self.importer import];
 	return YES;
 }
@@ -35,7 +37,7 @@
 	[defaults registerDefaults:appDefaults];
 	[defaults synchronize];
 }
-#pragma mark - Core Data stack
+#pragma mark - Core Data 
 
 - (void)saveContext {
 	NSError *error = nil;

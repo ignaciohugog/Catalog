@@ -16,15 +16,22 @@
 #import "ArticleDetailViewController.h"
 #import "FilterDelegate.h"
 
-@interface CatalogTableViewController() <FetchedResultsControllerDataSourceDelegate, FilterDelegate>
-
+@interface CatalogTableViewController() <FetchedResultsControllerDataSourceDelegate, FilterDelegate, DetailDelegate>
 @property (nonatomic, strong) FetchedResultsTableDataSource *dataSource;
-
+@property (nonatomic, strong) NSManagedObjectContext *managedObjectContext;
 @end
 
 @implementation CatalogTableViewController
 
 static NSString * const reuseIdentifier = @"CatalogTableViewCell";
+
+- (id)initWithCoder:(NSCoder *)aDecoder {
+	if (self = [super initWithCoder:aDecoder]) {
+		AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
+		self.managedObjectContext = appDelegate.managedObjectContext;
+	}
+	return self;
+}
 
 - (void)viewDidLoad {
 	[super viewDidLoad];
@@ -47,17 +54,15 @@ static NSString * const reuseIdentifier = @"CatalogTableViewCell";
 	self.dataSource = [[FetchedResultsTableDataSource alloc] initWithTableView:self.tableView];
 	self.dataSource.delegate = self;
 	self.dataSource.fetchedResultsController = [self createResultsController];
-
 	self.dataSource.reuseIdentifier = reuseIdentifier;
 }
 
 - (NSFetchedResultsController *)createResultsController {
 	NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Article"];
-	[request setFetchBatchSize:3];
 	request.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"identifier" ascending:YES]];
-	AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
+	[request setFetchBatchSize:50];
 	return [[NSFetchedResultsController alloc] initWithFetchRequest:request
-																						 managedObjectContext:appDelegate.managedObjectContext
+																						 managedObjectContext:self.managedObjectContext
 																							 sectionNameKeyPath:nil
 																												cacheName:nil];
 }
@@ -68,6 +73,7 @@ static NSString * const reuseIdentifier = @"CatalogTableViewCell";
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
 	ArticleDetailViewController *detailViewController = segue.destinationViewController;
+	detailViewController.delegate = self;
 	detailViewController.article = self.dataSource.selectedItem;
 }
 
@@ -88,10 +94,16 @@ static NSString * const reuseIdentifier = @"CatalogTableViewCell";
 																				failure:nil];
 }
 
-- (void)deleteObject:(id)object {
-	AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
-	[appDelegate.managedObjectContext deleteObject:object];
-	[appDelegate.managedObjectContext save:nil];
+- (void)deleteObject:(Article *)object {
+	NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+	NSMutableArray *deletedArticles = [[NSMutableArray alloc] initWithArray:
+																		 [userDefaults objectForKey:@"deletedArticles"]];
+	[deletedArticles addObject:object.identifier];
+	[userDefaults setObject:deletedArticles forKey:@"deletedArticles"];
+	[userDefaults synchronize];
+
+	[self.managedObjectContext deleteObject:object];
+	[self.managedObjectContext save:nil];
 }
 
 #pragma mark FilterDelegate

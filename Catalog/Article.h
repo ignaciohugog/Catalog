@@ -22,5 +22,5 @@
 @property (nonatomic, retain) NSString * bigImageUrl;
 
 - (void)loadFromDictionary:(NSDictionary *)dictionary;
-+ (Article *)findOrCreatePodWithIdentifier:(NSString *)identifier inContext:(NSManagedObjectContext *)context;
+
 @end

@@ -28,29 +28,38 @@
 
 - (void)viewDidLoad {
 	[super viewDidLoad];
+	[self setupArticle];
+	[self addDeleteButton];
+}
+
+- (void)setupArticle {
 	self.navigationItem.title = self.article.title;
 	self.publishDateLabel.text = self.article.publishDate;
 	self.categoryLabel.text = self.article.category;
 	self.channelLabel.text = self.article.channel;
 	self.authorLabel.text = self.article.author;
+	[self loadImage];
+}
 
+- (void)loadImage {
 	NSURLRequest *imageRequest = [NSURLRequest requestWithURL:[NSURL URLWithString:self.article.smallImageUrl]
 																								cachePolicy:NSURLRequestReturnCacheDataElseLoad
 																						timeoutInterval:60];
 	[self.articleImage setImageWithURLRequest:imageRequest
-															 placeholderImage:[UIImage imageNamed:@"placeholder"]
-																				success:nil
-																				failure:nil];
+													 placeholderImage:[UIImage imageNamed:@"placeholder"]
+																		success:nil
+																		failure:nil];
+}
 
-	UIBarButtonItem *anotherButton = [[UIBarButtonItem alloc] initWithTitle:@"Delete" style:UIBarButtonItemStylePlain
+- (void)addDeleteButton {
+	UIBarButtonItem *deleteButton = [[UIBarButtonItem alloc] initWithTitle:@"Delete"
+																																		style:UIBarButtonItemStylePlain
 																																	 target:self action:@selector(deleteArticle)];
-	self.navigationItem.rightBarButtonItem = anotherButton;
+	self.navigationItem.rightBarButtonItem = deleteButton;
 }
 
 - (void)deleteArticle {
-	AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
-	[appDelegate.managedObjectContext deleteObject:self.article];
-	[appDelegate.managedObjectContext save:nil];
+	[self.delegate deleteObject:self.article];
 	[self.navigationController popToRootViewControllerAnimated:YES];
 }
 

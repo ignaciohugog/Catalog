@@ -10,6 +10,5 @@
 #import "AFNetworking.h"
 
 @interface ArticlesService : NSObject
-	// TODO: error handler
-- (void)fetchAllArticles:(void (^)(NSArray *categories))callback;
+- (void)fetchAllArticles:(void (^)(NSArray *articles))callback;
 @end

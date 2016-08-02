@@ -19,6 +19,8 @@
 		4F2D8C591D4EB72300DBD897 /* ArticleDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F2D8C581D4EB72300DBD897 /* ArticleDetailViewController.m */; };
 		4F2D8C5E1D4EF4E500DBD897 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 4F2D8C5D1D4EF4E500DBD897 /* Settings.bundle */; };
 		4F2D8C611D4F91AE00DBD897 /* FilterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F2D8C601D4F91AE00DBD897 /* FilterViewController.m */; };
+		4F2D8C661D4FED9A00DBD897 /* FetchedResultsDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F2D8C651D4FED9A00DBD897 /* FetchedResultsDataSource.m */; };
+		4F2D8C6B1D5129B000DBD897 /* UpdateArticleEntities.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F2D8C6A1D5129B000DBD897 /* UpdateArticleEntities.m */; };
 		4FAF1E871D4BB1750038F618 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FAF1E861D4BB1750038F618 /* main.m */; };
 		4FAF1E8A1D4BB1750038F618 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FAF1E891D4BB1750038F618 /* AppDelegate.m */; };
 		4FAF1E931D4BB1750038F618 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4FAF1E911D4BB1750038F618 /* Main.storyboard */; };
@@ -77,6 +79,10 @@
 		4F2D8C5F1D4F91AE00DBD897 /* FilterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FilterViewController.h; sourceTree = "<group>"; };
 		4F2D8C601D4F91AE00DBD897 /* FilterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FilterViewController.m; sourceTree = "<group>"; };
 		4F2D8C631D4F999200DBD897 /* FilterDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FilterDelegate.h; sourceTree = "<group>"; };
+		4F2D8C641D4FED9A00DBD897 /* FetchedResultsDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FetchedResultsDataSource.h; sourceTree = "<group>"; };
+		4F2D8C651D4FED9A00DBD897 /* FetchedResultsDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FetchedResultsDataSource.m; sourceTree = "<group>"; };
+		4F2D8C691D5129B000DBD897 /* UpdateArticleEntities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UpdateArticleEntities.h; sourceTree = "<group>"; };
+		4F2D8C6A1D5129B000DBD897 /* UpdateArticleEntities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UpdateArticleEntities.m; sourceTree = "<group>"; };
 		4FAF1E821D4BB1750038F618 /* Catalog.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Catalog.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4FAF1E861D4BB1750038F618 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		4FAF1E881D4BB1750038F618 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -166,6 +172,8 @@
 			children = (
 				4F2D8C061D4CFBC300DBD897 /* Importer.h */,
 				4F2D8C071D4CFBC300DBD897 /* Importer.m */,
+				4F2D8C691D5129B000DBD897 /* UpdateArticleEntities.h */,
+				4F2D8C6A1D5129B000DBD897 /* UpdateArticleEntities.m */,
 			);
 			name = Importer;
 			sourceTree = "<group>";
@@ -178,8 +186,7 @@
 				4F2D8C4D1D4E801900DBD897 /* Article */,
 				4F2D8C051D4CFBAB00DBD897 /* Importer */,
 				4F2D8C041D4CF6BA00DBD897 /* ArticlesService */,
-				4F2D8C4B1D4E7F3700DBD897 /* FetchedResultsControllerDataSourceDelegate.h */,
-				4F2D8C631D4F999200DBD897 /* FilterDelegate.h */,
+				4F2D8C681D4FF55700DBD897 /* Protocols */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -223,6 +230,7 @@
 		4F2D8C511D4E818C00DBD897 /* DataSources */ = {
 			isa = PBXGroup;
 			children = (
+				4F2D8C671D4FEDAE00DBD897 /* FetchedResultsDataSource */,
 				4F2D8C4F1D4E80B400DBD897 /* FetchedCollectionDataSource */,
 				4F2D8C501D4E80E300DBD897 /* FetchedTableDataSource */,
 			);
@@ -263,6 +271,24 @@
 				4F2D8C601D4F91AE00DBD897 /* FilterViewController.m */,
 			);
 			name = FilterViewController;
+			sourceTree = "<group>";
+		};
+		4F2D8C671D4FEDAE00DBD897 /* FetchedResultsDataSource */ = {
+			isa = PBXGroup;
+			children = (
+				4F2D8C641D4FED9A00DBD897 /* FetchedResultsDataSource.h */,
+				4F2D8C651D4FED9A00DBD897 /* FetchedResultsDataSource.m */,
+			);
+			name = FetchedResultsDataSource;
+			sourceTree = "<group>";
+		};
+		4F2D8C681D4FF55700DBD897 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				4F2D8C4B1D4E7F3700DBD897 /* FetchedResultsControllerDataSourceDelegate.h */,
+				4F2D8C631D4F999200DBD897 /* FilterDelegate.h */,
+			);
+			name = Protocols;
 			sourceTree = "<group>";
 		};
 		4FAF1E791D4BB1750038F618 = {
@@ -667,7 +693,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4F2D8C6B1D5129B000DBD897 /* UpdateArticleEntities.m in Sources */,
 				4F2D8C3B1D4D705E00DBD897 /* ModelObject.m in Sources */,
+				4F2D8C661D4FED9A00DBD897 /* FetchedResultsDataSource.m in Sources */,
 				4F2D8C371D4D6FF200DBD897 /* Article.m in Sources */,
 				4F2D8C471D4E6C9500DBD897 /* FetchedResultsTableDataSource.m in Sources */,
 				4F2D8C341D4D369E00DBD897 /* Catalog.xcdatamodeld in Sources */,

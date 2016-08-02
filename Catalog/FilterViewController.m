@@ -18,9 +18,13 @@
 
 - (void)viewDidLoad {
 	[super viewDidLoad];
-	UIBarButtonItem *sortButton = [[UIBarButtonItem alloc] initWithTitle:@"Sort by name"
-																																		style:UIBarButtonItemStylePlain
-																																	 target:self action:@selector(sortByName)];
+	[self addOrderButton];
+}
+
+- (void)addOrderButton {
+	UIBarButtonItem *sortButton = [[UIBarButtonItem alloc] initWithTitle:@"Order by name"
+																																 style:UIBarButtonItemStylePlain
+																																target:self action:@selector(orderByName)];
 	self.navigationItem.rightBarButtonItem = sortButton;
 }
 
@@ -38,21 +42,14 @@
 	if ([self.container conformsToProtocol:@protocol(FilterDelegate)]) {
 		NSPredicate *fetchPredicate = [NSPredicate predicateWithFormat:@"title CONTAINS[cd] %@",
 																	 searchText];
-
 		NSFetchedResultsController* fetchedResultsController = [self.container fetchedResultsController];
 		[[fetchedResultsController fetchRequest] setPredicate:fetchPredicate];
 		[self performFetch:fetchedResultsController];
 	}
 }
-- (void)removeFilter {
-	if ([self.container conformsToProtocol:@protocol(FilterDelegate)]) {
-		NSFetchedResultsController* fetchedResultsController = [self.container fetchedResultsController];
-		[[fetchedResultsController fetchRequest] setPredicate:nil];
-		[self performFetch:fetchedResultsController];
-	}
-}
 
-- (void)sortByName {
+
+- (void)orderByName {
 	if ([self.container conformsToProtocol:@protocol(FilterDelegate)]) {
 		NSArray *sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"title" ascending:YES]];
 		NSFetchedResultsController* fetchedResultsController = [self.container fetchedResultsController];
@@ -61,12 +58,18 @@
 	}
 }
 
+- (void)removeFilter {
+	if ([self.container conformsToProtocol:@protocol(FilterDelegate)]) {
+		NSFetchedResultsController* fetchedResultsController = [self.container fetchedResultsController];
+		[[fetchedResultsController fetchRequest] setPredicate:nil];
+		[self performFetch:fetchedResultsController];
+	}
+}
+
 - (void)performFetch:(NSFetchedResultsController *) fetchController {
 	NSError *error;
 	if ([fetchController performFetch:&error]) {
 		[self.container reload];
-	} else {
-			//TODO: handle error
 	}
 }
 

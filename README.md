@@ -1,5 +1,7 @@
 # Catalog
 
+[![Join the chat at https://gitter.im/CatalogV3/Lobby](https://badges.gitter.im/CatalogV3/Lobby.svg)](https://gitter.im/CatalogV3/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 This is a Core Data basic app, that shows a list of all articles. 
 They are displayed in a tablew view and in a collection view and all the articles are fetched from a web service that returns
 them as JSON objects. 
